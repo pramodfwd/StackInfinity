@@ -18,13 +18,14 @@ const ProductForm: React.FC = () => {
         price: 0
     })
 
-    // doughted line 
+ 
     const handleChange = ({ target: { name, value } }: React.ChangeEvent<HTMLInputElement>) => {
-        setdata(prev => {
-            (prev as any)[name] = value;
-            const newvalue = { ...prev };
-            return newvalue
-        })
+        // setdata(prev => {
+        //     (prev as any)[name] = value;
+        //     const newvalue = { ...prev };
+        //     return newvalue
+        // })
+        setdata({...data,[name]:value})
     }
 
     const submitHandler = (e: React.FormEvent) => {
@@ -35,9 +36,9 @@ const ProductForm: React.FC = () => {
         <>
             <form onSubmit={submitHandler}>
                 <h2>Add Product to store</h2><br />
-                <input type="text" placeholder='Enter your Id' name='id' value={data.id} onChange={handleChange} />
+                <input type="number" placeholder='Enter your Id' name='id' value={data.id} onChange={handleChange} />
                 <input type="text" placeholder='Enter Post here' name='title' value={data.title} onChange={handleChange} />
-                <input type="text" placeholder='Enter Price here' name='price' value={data.price} onChange={handleChange} />
+                <input type="number" placeholder='Enter Price here' name='price' value={data.price} onChange={handleChange} />
                 <button type='submit'>Add Position</button>
             </form>
         </>

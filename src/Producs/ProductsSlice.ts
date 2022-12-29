@@ -18,13 +18,21 @@ const productSlice =  createSlice ({
     initialState,
     reducers: {
         addProduct: (state, action:PayloadAction<Product>) => {
-            return [...state,action.payload]
+            // return [...state,action.payload]
+            state.push(action.payload)
+        },
+        removeProduct : (state, action:PayloadAction<number>) => {
+            return state.filter(product=> 
+                product.id !==  action.payload
+            )
         }
     }
 })
-export const {addProduct} = productSlice.actions;
+export const {addProduct,removeProduct} = productSlice.actions;
 
 export const getProductsSelector = (state: RootState) => state.Products;
+
+
 
 export default productSlice.reducer
 
